@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "102456247782",
+    "project_id": "maps-af0c8",
+    "storage_bucket": "maps-af0c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:102456247782:android:fdc3cc6bc1bc23ead5c227",
+        "android_client_info": {
+          "package_name": "com.example.tubesakb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "102456247782-1v7idom32fbnnd3bd2tncce6l04jkl69.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwHQtQf_5cOE9tVPcfTl-pF2mRAAz2zTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "102456247782-1v7idom32fbnnd3bd2tncce6l04jkl69.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
