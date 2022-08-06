@@ -7,31 +7,56 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.tubesakb.R;
 import com.example.tubesakb.databinding.FragmentAboutBinding;
+import com.example.tubesakb.databinding.FragmentHomeBinding;
+import com.example.tubesakb.ui.home.HomeViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AboutFragment extends Fragment {
+    ViewPager2 viewPager2;
+    List<AboutViewModel> aboutList;
 
-    private FragmentAboutBinding binding;
+    @Override
+    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_about, container, false);
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        AboutViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(AboutViewModel.class);
+        viewPager2 = view.findViewById(R.id.viewpager);
+        aboutList = new ArrayList<>();
 
-        binding = FragmentAboutBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        String[] judul = {"About", "Version"};
+        String[] desc = {"Aplikasi ini dibuat untuk memenuhi Tugas Besar AKB", "V 0.1 \n" +
+                "Copyright  © 2022 - 2077 RNAAR Inc.\n" +
+                "All right reserved\n"};
 
-//        final TextView textView = binding.textDashboard;
-//        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-        return root;
+        for (int i=0; i < judul.length; i++){
+            AboutViewModel item = new AboutViewModel(judul[i], desc[i]);
+            aboutList.add(item);
+        }
+
+        ViewPagerAboutAdapter adapter = new ViewPagerAboutAdapter(aboutList);
+        viewPager2.setAdapter(adapter);
+        viewPager2.setClipToPadding(false);
+        viewPager2.setClipChildren(false);
+        viewPager2.setOffscreenPageLimit(2);
+        viewPager2.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
+
+        return view;
     }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
+
 }
